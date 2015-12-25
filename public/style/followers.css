@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+.window {
+	margin-top: 300px;
+	width: 1200px;
+}
+
+table {
+	font-family: mainFont;
+	font-size: 14px;
+	font-weight: lighter;
+	color:#666;
+}
+
+table a {
+	display: block;
+	text-decoration: none;
+}
+
+th {
+	cursor: default;
+	min-width: 70px;
+	background-color: #BBB;
+	color:#333;
+	padding: 4px;
+}
+
+td {
+	background-color: #DDD;
+	text-align: center;
+	padding: 2px;
+	font-size: 13px;
+}

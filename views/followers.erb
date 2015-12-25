@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>followers</title>
+  <link rel = "icon" type = "image/png" href = "/style/Assets/icon.png">
+  <link href="/style/main.css" rel="stylesheet">
+  <link href="/style/homepage.css" rel="stylesheet">
+  <link href="/style/followers.css" rel="stylesheet">
+</head>
+<body>
+
+<div class = "window animation-easeIn">
+  <div class = "main">
+    <h3>Followers</h3>
+    <%= erb :nav %>
+	
+	<section>
+	<%unless @followers.nil? %>
+		<table class="followersTable">
+			<% i = 0 %>
+			<% @followers.each_with_index do |user,x| %>
+				<% if i%10 == 0 %>
+					<tr>
+				<% end %>
+					 <th><a href="<%=h user.uri %>" class="userName"><%=h user.screen_name %></a></th>
+				<% i = i+1 %>
+				<% if i%10 == 0 %>
+					</tr>
+				<% end %>			
+			<% end %>
+		</table>
+	<% end %>
+    <%= erb :page_nav %>
+    </section>
+  </div>
+  <% unless @error.nil? %>
+      <p class = "error"><%= @error %></p>
+  <% end %>
+</div>
+
+</body>
+</html>

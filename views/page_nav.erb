@@ -1,0 +1,33 @@
+<% unless params[:search].nil? || params[:search] == '' %>
+<div class = "pageNavHolder" >
+<div class = "pageNav">
+<% @sort_type = request.url.to_s[-1,1]
+   puts @sort_type
+   if !/[1-6]/.match(@sort_type.to_s)
+     @sort_type = 0
+   end
+   
+   puts @sort_type
+   if params[:page].to_i > 1  %>
+    <% @prev_page = (params[:page].to_i) - 1 %>
+    <a class = "buttonInput inForm page" href="javascript:updatePageWithSort(<%=@prev_page%>,<%=@sort_type%>);">Prev</a>
+
+<% end %>
+
+<% unless params[:page].nil? %>
+    <% for i in 1..(@maxTweets.to_f / params[:per_page].to_f).ceil %>
+        <% if i != params[:page].to_i %>
+              <a class = "nav" href = "javascript:updatePageWithSort(<%= i %>,<%=@sort_type%>);"><%= i %></a>
+        <% else %>
+            <%= i %>
+        <% end %>
+    <% end %>
+<% end %>
+<%if @maxTweets.to_i > @upperBound.to_i %>
+    <% @next_page = (params[:page].to_i) + 1 %>
+    <a class = "buttonInput inForm page" href="javascript:updatePageWithSort(<%=@next_page%>,<%=@sort_type%>);">Next</a>
+
+<% end %>
+</div>
+</div>
+<% end %>

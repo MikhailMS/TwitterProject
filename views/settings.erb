@@ -1,0 +1,77 @@
+<html>
+
+<head>
+  <title>Custom Twitter Search</title>
+  <link rel = "icon" type = "image/png" href = "/style/Assets/icon.png">
+  <link href="/style/main.css" rel="stylesheet">
+  <link href="/style/homepage.css" rel="stylesheet">
+  <link href="/style/settings.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="window animation-easeIn">
+  <div class="main">
+    <h3><%= @user %>'s Settings</h3>
+    <%= erb :nav %>
+    <section>
+      <% if addUserForm %>
+          <span class = "title">Admin Settings</span>
+          <p>
+          <div class="newAccount">
+              <form id="newAccount" method="post" action="/addAcc">
+                Create New Account:<br />
+                <input class = "textInput" type="text" name="accountName" value="<%=h params[:accountName] %>" placeholder="Email..." required /><br />
+                <input class = "textInput" type="password" name="accountPassword" value="<%=h params[:accountPassword] %>" placeholder="Password..." required /><br />
+                <input class = "buttonInput inForm" type="submit" name="submit" value="submit" />
+              </form>
+          </div>
+          <div class="updatePermission">
+              <form id="updatePermission" method="post" action="/updatePermission">
+                Set Account Permissions:<br />
+                <input class = "textInput" type="text" name="accountName_Per" value="<%=h params[:accountName] %>" placeholder="Email..." required /><br />
+                <input id ="userRadio" class = "radioInput" type="radio" name="accountPermission" value="User" checked/>User
+                <input id ="adminRadio" class = "radioInput" type="radio" name="accountPermission" value="Admin" />Admin<br />
+                <input class = "buttonInput inForm" type="submit" name="submit" value="submit" />
+              </form>
+          </div>
+          <div class="clearSearch">
+              <form id="clearSearch" method="post" action="/clearSearches">
+                Clear Searches:<br />
+                <input class = "buttonInput inForm" type="submit" name="submit" value="Clear Saved Searches" />
+              </form>
+          </div>
+          <div class="deleteUsers">
+              <form id="deleteUser" action="/deleteUser" method="post" >
+                Delete user:<br />
+                <input class="textInput" type="text" name="userToDelete" value="<%=h params[:userToDelete] %>" placeholder="Enter user name..." required />
+                <input class = "buttonInput inForm" type="submit" name="submit" value="submit" />
+              </form>
+          </div>
+      <% end %>
+      </p>
+      <span class = "title">User Settings</span>
+      <p>
+      <div class ="newPassword">
+          <form class = "bottomForm" method="post" action="/chPass">
+            Change Account Password:<br />
+            <input class = "textInput" type="password" name="passOld" value="<%=h params[:passOld] %>" placeholder="Old Password..." required /><br />
+            <input class = "textInput" type="password" name="passNew" value="<%=h params[:passNew] %>" placeholder="New Password..." required /><br />
+            <input class = "textInput" type="password" name="passNew2" value="<%=h params[:passNew2] %>" placeholder="New Password..." required /><br />
+            <input class = "buttonInput inForm" type="submit" name="submit" value="submit" />
+          </form>
+      </div>
+      </p>
+    </section>
+  </div>
+  <% unless @success.nil? %>
+      <p class = "error success"><%= @success %></p>
+  <% end %>
+  <% unless @error.nil? %>
+      <p class = "error"><%= @error %></p>
+  <% end %>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+@charset "utf-8";
+
+.window {
+	width: 600px;
+}
+
+nav {
+	height: 37px;
+	background-color: #646464;
+}
+
+.navButton {
+	padding: 10px;
+	float: right;
+	text-decoration: none;
+	color: #FFF;
+	font-family: mainFont;
+	font-size: 14px;
+	font-weight: lighter;
+	transition: all 0.1s ease;
+	background-color: #4B4B4B;
+}
+
+.navButton:hover {
+	background-color: #565656;
+}
+
+.commonSearches {
+	cursor: default;
+	display: inline-block;
+	padding: 5px;
+	width: 570px;
+	text-decoration: none;
+	font-family: mainFont;
+	font-size: 14px;
+	font-weight: lighter;
+	color: #777777;
+	background: linear-gradient(to top, #E1E1E1, #F1F1F1);
+	border-radius: 2px;
+	box-shadow: 0px 0px 1px 1px #A1A1A1;
+}
+.user {
+	width: inherit;
+}
+.admin {
+	color: #FFFFFF;
+	background: linear-gradient(to top, #df8080, #ef8080);
+}
+.commonSearches:hover {
+	color: #575757;
+	background: linear-gradient(to top, #C1C1C1, #D1D1D1);
+}
+.commonSearches:active {
+	color: #575757;
+	background: linear-gradient(to bottom, #C1C1C1, #D1D1D1);
+}
+.admin:hover {
+	color: #FFFFFF;
+	background: linear-gradient(to top, #af8080, #cf8080);
+}
+.admin:active {
+	color: #FFFFFF;
+	background: linear-gradient(to bottom, #af8080, #cf8080);
+}
+
+.marginBottom {
+	display: inline-block;
+	margin-bottom: 8px;
+}

@@ -1,0 +1,242 @@
+@charset "utf-8";
+
+@font-face {
+	font-family: mainFont;
+	src: url(Fonts/HelveticaNeueLTPro-Roman.otf);
+}
+
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	background-color: #156d92;
+	background-image: url(Assets/background1.svg), url(Assets/background2.svg);
+	background-size: 100% auto, 100% auto;
+	background-repeat: no-repeat, no-repeat;
+	background-position: center 140%, center 100%;
+	overflow: hidden;
+	-webkit-animation: movingBackground 6s ease-in-out infinite;
+	-moz-animation: movingBackground 6s ease-in-out infinite;
+	animation: movingBackground 6s ease-in-out infinite;
+}
+
+@-webkit-keyframes movingBackground {
+	0% {
+		background-position: center 120%, center 100%;
+	}
+	50% {
+		background-position: center 100%, center 120%;
+	}
+	100% {
+		background-position: center 120%, center 100%;
+	}
+}
+@-moz-keyframes movingBackground {
+	0% {
+		background-position: center 120%, center 100%;
+	}
+	50% {
+		background-position: center 100%, center 120%;
+	}
+	100% {
+		background-position: center 120%, center 100%;
+	}
+}
+@keyframes movingBackground {
+	0% {
+		background-position: center 120%, center 100%;
+	}
+	50% {
+		background-position: center 100%, center 120%;
+	}
+	100% {
+		background-position: center 120%, center 100%;
+	}
+}
+
+.window {
+	width: 300px;
+	margin: 0px auto;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	
+	-webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 0.5s;
+	-moz-animation-name: fadeIn;
+    -moz-animation-duration: 0.5s;
+	animation-name: fadeIn;
+    animation-duration: 0.5s;
+}
+
+.main {
+	box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.3);
+}
+
+section {
+	clear: right;
+	padding: 10px;
+	font-family: mainFont;
+	font-size: 14px;
+	background-color: #FFF;
+	background-image: url(Assets/twitter_back.png);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+
+h3 {
+	cursor: default;
+	background: linear-gradient(to top, #B1B1B1, #C1C1C1);
+	padding: 8px;
+	font-family: mainFont;
+	font-size: 14px;
+	font-weight: lighter;
+	color: #474747;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+}
+
+.error {
+	cursor: default;
+	padding: 4px;
+	margin: 4px 0px;
+	background-color: #dd4040;
+	font-family: mainFont;
+	font-size: 14px;
+	font-weight: lighter;
+	color: #FFF;
+	box-shadow: 0px 4px 4px 1px #083e54;
+	border-radius: 2px;
+	position: relative;
+	
+	-webkit-animation-name: liftError;
+    -webkit-animation-duration: 0.4s;
+	-moz-animation-name: liftError;
+    -moz-animation-duration: 0.4s;
+	animation-name: liftError;
+    animation-duration: 0.4s;
+}
+
+.success {
+	background-color: #62c465;
+}
+
+@-webkit-keyframes liftError {
+    0% {
+		opacity: 0;
+    	filter: alpha(opacity = 0);
+        transform: translateY(10px);
+    }
+    100% {
+		opacity: 1;
+    	filter: alpha(opacity = 100);
+        transform: translateY(0);
+    }
+}
+
+@-moz-keyframes liftError {
+    0% {
+		opacity: 0;
+    	filter: alpha(opacity = 0);
+        transform: translateY(10px);
+    }
+    100% {
+		opacity: 1;
+    	filter: alpha(opacity = 100);
+        transform: translateY(0);
+    }
+}
+
+@keyframes liftError {
+    0% {
+		opacity: 0;
+    	filter: alpha(opacity = 0);
+        transform: translateY(10px);
+    }
+    100% {
+		opacity: 1;
+    	filter: alpha(opacity = 100);
+        transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+		opacity: 0;
+    	filter: alpha(opacity = 0);
+    }
+    100% {
+		opacity: 1;
+    	filter: alpha(opacity = 100);
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+		opacity: 0;
+    	filter: alpha(opacity = 0);
+    }
+    100% {
+		opacity: 1;
+    	filter: alpha(opacity = 100);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+		opacity: 0;
+    	filter: alpha(opacity = 0);
+    }
+    100% {
+		opacity: 1;
+    	filter: alpha(opacity = 100);
+    }
+}
+
+.animation-easeIn {
+	-webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in;
+	-moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease-in;
+	animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+}
+
+.buttonInput {
+	cursor: default;
+	padding: 6px 20px;
+	padding-bottom: 8px;
+	margin: 11px;
+	font-family: mainFont;
+	font-size: 16px;
+	font-weight: lighter;
+	color: #FFF;
+	background-color: #64aacd;
+	border: none;
+	outline: none;
+	box-shadow: 0px -2px 0px 0px #3e7794 inset;
+	text-decoration: none;
+}
+.buttonInput:hover {
+	position: relative;
+	top: -2px;
+	padding-bottom: 10px;
+	box-shadow: 0px -4px 0px 0px #3e7794 inset;
+}
+.buttonInput:active {
+	position: relative;
+	top: 2px;
+	padding-bottom: 6px;
+	box-shadow: none;
+}
+
+.title {
+	font-family: mainFont;
+	font-weight: lighter;
+	font-size: 16px;
+}
+	

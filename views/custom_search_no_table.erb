@@ -1,0 +1,92 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Twitter Search</title>
+</head>
+<body>
+<h1>Custom Twitter Search</h1>
+
+<form method="get">
+  Search: <input type="text" name="search" value="<%=h params[:search] %>"/>
+  <input type="submit" name="submit" value="submit"/>
+</form>
+
+<%unless @tweets.nil? %>
+    <% if @tweets.length == 0 %>
+        <p>No search results found!</p>
+    <% else %>
+    <!-- url used to sort -->
+        <% url = request.fullpath
+           split_url = url.split('?',2)
+           @get_part = split_url[1]
+        %>
+        <select>
+          <option value="">Sort by...</option>
+          <option value="retweets">Retweets</option>
+          <option value="favourites">Favourites</option>
+        </select>
+        <% @tweets.each_with_index do |tweet,x| %>
+            <div class = "tweet">
+                <h2><% h x+1 %></h2> <!-- Number in list -->
+                <a href="<%=h tweet.user.uri %>" class="userName"><%=h tweet.user.screen_name %></a> <!-- Username + link -->
+                <h3>
+                    <%=h tweet.text %><br/> <!-- Message -->
+                    <%=h tweet.retweet_count %> <!-- Retweets -->
+                    <%=h tweet.favorite_count %> <!-- Favourites -->
+                </h3>
+            </div>
+        <% end %>
+    <% end %>
+<% end %>
+
+<h2><a href="/logout">Logout</a></h2>
+
+</body>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Twitter Search</title>
+</head>
+<body>
+<h1>Custom Twitter Search</h1>
+
+<form method="get">
+  Search: <input type="text" name="search" value="<%=h params[:search] %>"/>
+  <input type="submit" name="submit" value="submit" />
+</form>
+
+<%unless @tweets.nil? %>
+    <% if @tweets.length == 0 %>
+        <p>No search results found!</p>
+    <% else %>
+    <!-- url used to sort -->
+        <% url = request.fullpath
+           split_url = url.split('?',2)
+           @get_part = split_url[1]
+        %>
+        <select>
+          <option value="">Sort by...</option>
+          <option value="retweets">Retweets</option>
+          <option value="favourites">Favourites</option>
+        </select>
+        <% @tweets.each_with_index do |tweet,x| %>
+            <div class = "tweet">
+                <h2><% h x+1 %></h2> <!-- Number in list -->
+                <a href="<%=h tweet.user.uri %>" class="userName"><%=h tweet.user.screen_name %></a> <!-- Username + link -->
+                <h3>
+                    <%=h tweet.text %><br/> <!-- Message -->
+                    <%=h tweet.retweet_count %> <!-- Retweets -->
+                    <%=h tweet.favorite_count %> <!-- Favourites -->
+                </h3>
+            </div>
+        <% end %>
+    <% end %>
+<% end %>
+
+<h2><a href="/logout">Logout</a></h2>
+
+</body>
+>>>>>>> 0aa2a8f50c978dfbbf97a82f3a9d63e07f8fd8c0
+</html>

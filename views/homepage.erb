@@ -1,0 +1,63 @@
+<html>
+
+<head>
+  <title>Custom Twitter Search</title>
+  <link rel = "icon" type = "image/png" href = "/style/Assets/icon.png">
+  <link href="/style/main.css" rel="stylesheet">
+  <link href="/style/homepage.css" rel="stylesheet">
+  <script src="/scripts/searchWindowPosition.js"></script>
+  <script type="text/javascript">
+      function deleteUser (elem) {
+          var user_name = elem.value;
+          if(confirm("Do you really want ot delete "+user_name+" from the system?")) {
+              elem.parentNode.removeChild(elem);
+              <%=h deleteUsers('newAccount4') %>
+              return false;
+          }
+          else {
+              var text = "You did not delete user from the system";
+              document.getElementById('extra_features').innerHTML = text;
+          }
+
+      }
+  </script>
+</head>
+
+<body>
+
+<div class="window animation-easeIn">
+  <div class="main">
+    <h3>Logged in as <%=h @user %></h3>
+    <%= erb :nav %>
+    <section>
+        <span class = "title marginBottom">Recent search queries:</span><br />
+        <% if @urls.length > 0 %>
+            <% for item in 0...@urls.length %>
+                <a class = "commonSearches" href="<%=h @urls[item].join %>"><%=h @strings[item].join %></a><br />
+            <% end %>
+        <% end %>
+        <br />
+        <% if @users.length > 0 %>
+            <span class ="title marginBottom">Users:</span><br />
+            <% for item in 0...@users.length %>
+                <% if @users[item][1] == "1" %>
+                  <p class = "commonSearches user admin" onclick="deleteUser(this)"> <%=h @users[item][0] %></p>
+                <% else %>
+                    <p class = "commonSearches user" onclick="deleteUser(this)"> <%=h @users[item][0] %></p>
+                <% end %>
+            <% end %>
+        <% end %>
+      <p id="extra_features"></p>
+      <% unless @success.nil? %>
+          <p class = "error success"><%= @success %></p>
+      <% end %>
+      <% unless @error.nil? %>
+          <p class = "error"><%= @error %></p>
+      <% end %>
+    </section>
+  </div>
+
+</div>
+
+</body>
+</html>

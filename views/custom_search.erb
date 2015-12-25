@@ -1,0 +1,94 @@
+<html>
+<html>
+<head>
+  <title>Custom Twitter Search</title>
+  <link rel = "icon" type = "image/png" href = "/style/Assets/icon.png">
+  <link href="/style/main.css" rel="stylesheet">
+  <link href="/style/homepage.css" rel="stylesheet">
+  <link href="/style/search.css" rel="stylesheet">
+  <script src="/scripts/searchFormUpdate.js"></script>
+  <script src="/scripts/searchWindowPosition.js"></script>
+</head>
+<body>
+<div class = "window animation-easeIn">
+  <div class = "main">
+    <h3>Search</h3>
+    <%= erb :nav %>
+    <form id = "search_form" method="get">
+      Search: <input class="textInput" type="text" name="search" value="<%=h params[:search] %>"/>
+      Tweets per page:
+      <input id="radioInput5" class = "radioInput" type="radio" name="per_page" value="5" <%= params[:per_page].to_i == 5 ? "checked" : "" %>/>5
+      <input id="radioInput10" class = "radioInput" type="radio" name="per_page" value="10" <%= params[:per_page].nil? || params[:per_page].to_i == 10 ? "checked" : "" %>/>10
+      <input id="radioInput20" class = "radioInput" type="radio" name="per_page" value="20" <%= params[:per_page].to_i == 20 ? "checked" : "" %>/>20
+      <input id = "page_hidden" type = "hidden" name = "page" value = "1">
+      <input id = "sort_hidden" type = "hidden" name = "sort" value = "">
+      <input class="buttonInput inForm" type="submit" name="submit_form" value="submit"/>
+    </form>
+    <section>
+
+  <% @url = request.fullpath
+     @split_url = @url.split('?',2)
+     @get_part = @split_url[1]
+
+     if @split_url == nil
+       @before_get = ""
+       @get_part = ""
+     else
+       @before_get = @split_url[0].to_s
+     end
+  %>
+    <% unless @tweets.nil? %>
+        <% if @tweets.length == 0 %>
+            <p>No search results found!</p>
+        <% else %>
+            <br />
+            <table class="searchTable">
+              <tr>
+                <th>#</th>
+                <th class="usernameColumn">Username</br><a class="tab" href="javascript:updateUserUp(<%= params[:page] %>);">A-Z</a>  <a class="tab" href="javascript:updateUserDown(<%= params[:page] %>);">Z-A</a></th>
+                <th>Text</th>
+                <th class="retweetsColumn">Retweets</br><a class="tab" href="javascript:updateRetweetUp(<%= params[:page] %>);">Asc</a>  <a class="tab" href="javascript:updateRetweetDown(<%= params[:page] %>);">Desc</a></th>
+                <th class="favouritesColumn">Favourites</br><a class="tab" href="javascript:updateFavouriteUp(<%= params[:page] %>);">Asc</a>  <a class="tab" href="javascript:updateFavouriteDown(<%= params[:page] %>);">Desc</a></th>
+              </tr>
+              <% print("Page num: ")
+                 puts(params[:page].to_i)
+              %>
+              <% @tweets.each_with_index do |tweet,x| %>
+                  <% @upperBound = params[:page].to_i*(params[:per_page].to_i)
+                     @lowerBound = (params[:per_page].to_i) * ((params[:page].to_i) - 1)
+                     if (x < @upperBound) && (x >= @lowerBound)
+                  %>
+                       <tr>
+                       <td>
+                       <a class="tab row" href="<%=h tweet.uri %>"><%=h x+1 %></a>
+                      </td>
+                      <td>
+                        <a class="tab row" href="<%=h tweet.user.uri %>">
+                          <%=h tweet.user.screen_name %>
+                        </a>
+                      </td>
+                      <td>
+                        <%=h tweet.text %>
+                      </td>
+                      <td>
+                        <%=h tweet.retweet_count %>
+                      </td>
+                      <td>
+                        <%=h tweet.favorite_count %>
+                      </td>
+                      </tr>
+                  <% end %>
+              <% end %>
+            </table>
+        <% end %>
+    <% end %>
+
+      <%= erb :page_nav %>
+        </section>
+    </div>
+  <% unless @error.nil? %>
+      <p class = "error"><%= @error %></p>
+  <% end %>
+</div>
+</body>
+</html>

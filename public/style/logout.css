@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.window {
+	width: 200px;
+}
+
+section {
+	height: 60px;
+	padding: 10px;
+	text-align: center;
+}
+
+.buttonInput {
+	margin: 0px auto;
+}

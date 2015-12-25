@@ -1,0 +1,55 @@
+#wrapper {
+    background-color:#c1d3d1;
+    /* width of website is 800 px, narrow enough to fit on any desktop screen, but not too large you need a really modern screen for. */
+    width:90%;
+    /*Margin 0 auto sets the website to float in the middle of the page */
+    margin: auto;
+    /*The box shadow makes it appear to float above and to the left of the page slightly */
+    -moz-box-shadow:6px 7px 7px #060940;
+    -webkit-box-shadow:6px 7px 7px #060940;
+    box-shadow:6px 7px 7px #060940;
+    /*The border radius gives rounded edges to the page, used a large radius because it is a large page*/
+    border-radius:15px;
+    padding: 20px;
+}
+
+body {
+    margin-top:10px;
+    margin-bottom:20px;
+    background-color:#DFE8E7;
+    /*Went for a basic and formal font throughout */
+    font-family:Arial,Sans-Serif;
+    color:#1B3040;
+}
+
+p {
+    padding:0 5px;
+    margin:5px;
+}
+
+h1 {
+    color:#0A1740;
+    font-size:300%;
+    text-align:right;
+    padding:20px;
+    margin:0;
+}
+
+a {
+    text-decoration:none;
+}
+
+/*inherit the colours from the element the link is contained in, but keep the underline to show that it is a link */
+a:link {
+    color:inherit;
+    text-decoration:underline;
+}
+
+/* Use inherit here to override the usual different coloring for links that have been visited and hovering over*/
+a:visited {
+    color:inherit;
+}
+
+a:hover {
+    color:inherit;
+}
